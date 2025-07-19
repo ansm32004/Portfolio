@@ -71,20 +71,20 @@ const ProjectStack = () => {
   };
 
   return (
-    <section id="projects-section" className="py-20 relative z-10">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+    <section id="projects-section" className="py-12 md:py-20 relative z-10">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Featured Projects
           </h2>
-          <p className="text-white/60 text-lg max-w-2xl mx-auto">
+          <p className="text-white/60 text-base md:text-lg max-w-2xl mx-auto px-4">
             Interactive showcase of my latest work and creative solutions
           </p>
         </div>
-        <div className="max-w-6xl mx-auto grid grid-cols-2 grid-rows-2 gap-8 min-h-[600px]">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-4 md:gap-8 min-h-[400px] md:min-h-[600px]">
           {/* Main project - large box */}
           <div
-            className="row-span-2 col-span-1 bg-white/5 rounded-3xl border border-white/10 cursor-pointer group relative flex flex-col justify-end overflow-hidden hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+            className="md:row-span-2 md:col-span-1 bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 cursor-pointer group relative flex flex-col justify-end overflow-hidden hover:shadow-2xl hover:scale-[1.02] md:hover:scale-[1.03] transition-all duration-300 min-h-[300px] md:min-h-[400px]"
             onClick={() => handleCardClick(projects[0])}
           >
             {/* Project image for main card */}
@@ -93,47 +93,53 @@ const ProjectStack = () => {
                 <img
                   src={projects[0].image}
                   alt={projects[0].title}
-                  className="object-cover w-full h-full rounded-3xl opacity-80 group-hover:opacity-100 transition-all duration-300"
+                  className="object-cover w-full h-full rounded-2xl md:rounded-3xl opacity-80 group-hover:opacity-100 transition-all duration-300"
                 />
               ) : (
-                <span className="text-white/30 text-6xl">Image</span>
+                <span className="text-white/30 text-4xl md:text-6xl">Image</span>
               )}
             </div>
-            <div className="relative z-10 p-8">
-              <div className="text-white/40 text-sm mb-2 group-hover:text-blue-200 transition-all duration-300">{projects[0].year}</div>
-              <h3 className="text-white font-bold text-2xl mb-4 group-hover:text-blue-100 transition-all duration-300">
+            <div className="relative z-10 p-4 md:p-8">
+              <div className="text-white/40 text-xs md:text-sm mb-2 group-hover:text-blue-200 transition-all duration-300">{projects[0].year}</div>
+              <h3 className="text-white font-bold text-lg md:text-2xl mb-2 md:mb-4 group-hover:text-blue-100 transition-all duration-300 line-clamp-2">
                 {projects[0].title}
               </h3>
-              <p className="text-white/60 text-sm leading-relaxed group-hover:text-blue-200 transition-all duration-300">
+              <p className="text-white/60 text-xs md:text-sm leading-relaxed group-hover:text-blue-200 transition-all duration-300 line-clamp-3 md:line-clamp-none">
                 {projects[0].description}
               </p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {projects[0].tech.map((tech, techIndex) => (
+              <div className="flex flex-wrap gap-1 md:gap-2 mt-2 md:mt-4">
+                {projects[0].tech.slice(0, 3).map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="text-xs bg-white/10 text-white/80 px-3 py-1 rounded-full group-hover:bg-blue-500/20 group-hover:text-blue-100 transition-all duration-300"
+                    className="text-[10px] md:text-xs bg-white/10 text-white/80 px-2 md:px-3 py-1 rounded-full group-hover:bg-blue-500/20 group-hover:text-blue-100 transition-all duration-300"
                   >
                     {tech}
                   </span>
                 ))}
+                {projects[0].tech.length > 3 && (
+                  <span className="text-[10px] md:text-xs bg-white/10 text-white/80 px-2 md:px-3 py-1 rounded-full">
+                    +{projects[0].tech.length - 3}
+                  </span>
+                )}
               </div>
               <a
                 href={projects[0].projectUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 px-4 py-2 bg-blue-600 text-white rounded-full font-semibold shadow hover:bg-blue-700 transition-all duration-200"
+                className="inline-flex items-center gap-1 md:gap-2 mt-3 md:mt-6 px-3 md:px-4 py-1.5 md:py-2 bg-blue-600 text-white rounded-full font-semibold shadow hover:bg-blue-700 transition-all duration-200 text-xs md:text-sm"
+                onClick={(e) => e.stopPropagation()}
               >
-                View Project <ExternalLink size={18} />
+                View Project <ExternalLink size={14} className="md:hidden" /><ExternalLink size={18} className="hidden md:block" />
               </a>
             </div>
-            <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_40px_10px_rgba(59,130,246,0.15)]" />
+            <div className="absolute inset-0 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_20px_5px_rgba(59,130,246,0.15)] md:shadow-[0_0_40px_10px_rgba(59,130,246,0.15)]" />
           </div>
 
           {/* Other projects - small boxes */}
           {projects.slice(1, 4).map((project, idx) => (
             <div
               key={project.id}
-              className="bg-white/5 rounded-3xl border border-white/10 cursor-pointer group relative flex flex-col justify-end overflow-hidden hover:shadow-2xl hover:scale-105 transition-all duration-300"
+              className="bg-white/5 rounded-2xl md:rounded-3xl border border-white/10 cursor-pointer group relative flex flex-col justify-end overflow-hidden hover:shadow-2xl hover:scale-[1.02] md:hover:scale-105 transition-all duration-300 min-h-[250px] md:min-h-[280px]"
               onClick={() => handleCardClick(project)}
             >
               {/* Project image or placeholder */}
@@ -142,40 +148,46 @@ const ProjectStack = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full rounded-3xl opacity-80 group-hover:opacity-100 transition-all duration-300"
+                    className="object-cover w-full h-full rounded-2xl md:rounded-3xl opacity-80 group-hover:opacity-100 transition-all duration-300"
                   />
                 ) : (
-                  <span className="text-white/30 text-4xl">Image</span>
+                  <span className="text-white/30 text-3xl md:text-4xl">Image</span>
                 )}
               </div>
-              <div className="relative z-10 p-6">
-                <div className="text-white/40 text-xs mb-1 group-hover:text-blue-200 transition-all duration-300">{project.year}</div>
-                <h3 className="text-white font-bold text-lg mb-2 group-hover:text-blue-100 transition-all duration-300">
+              <div className="relative z-10 p-4 md:p-6">
+                <div className="text-white/40 text-[10px] md:text-xs mb-1 group-hover:text-blue-200 transition-all duration-300">{project.year}</div>
+                <h3 className="text-white font-bold text-sm md:text-lg mb-1 md:mb-2 group-hover:text-blue-100 transition-all duration-300 line-clamp-2">
                   {project.title}
                 </h3>
-                <p className="text-white/60 text-xs leading-relaxed group-hover:text-blue-200 transition-all duration-300">
+                <p className="text-white/60 text-[10px] md:text-xs leading-relaxed group-hover:text-blue-200 transition-all duration-300 line-clamp-2 md:line-clamp-3">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-1 mt-2">
-                  {project.tech.map((tech, techIndex) => (
+                <div className="flex flex-wrap gap-1 mt-1 md:mt-2">
+                  {project.tech.slice(0, 2).map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="text-[10px] bg-white/10 text-white/80 px-2 py-0.5 rounded-full group-hover:bg-blue-500/20 group-hover:text-blue-100 transition-all duration-300"
+                      className="text-[8px] md:text-[10px] bg-white/10 text-white/80 px-1.5 md:px-2 py-0.5 rounded-full group-hover:bg-blue-500/20 group-hover:text-blue-100 transition-all duration-300"
                     >
                       {tech}
                     </span>
                   ))}
+                  {project.tech.length > 2 && (
+                    <span className="text-[8px] md:text-[10px] bg-white/10 text-white/80 px-1.5 md:px-2 py-0.5 rounded-full">
+                      +{project.tech.length - 2}
+                    </span>
+                  )}
                 </div>
                 <a
                   href={project.projectUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-4 px-3 py-1.5 bg-blue-600 text-white rounded-full font-semibold shadow hover:bg-blue-700 transition-all duration-200"
+                  className="inline-flex items-center gap-1 md:gap-2 mt-2 md:mt-4 px-2 md:px-3 py-1 md:py-1.5 bg-blue-600 text-white rounded-full font-semibold shadow hover:bg-blue-700 transition-all duration-200 text-[10px] md:text-xs"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  View Project <ExternalLink size={16} />
+                  View <ExternalLink size={12} className="md:hidden" /><ExternalLink size={16} className="hidden md:block" />
                 </a>
               </div>
-              <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_20px_5px_rgba(59,130,246,0.10)]" />
+              <div className="absolute inset-0 rounded-2xl md:rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_15px_3px_rgba(59,130,246,0.10)] md:shadow-[0_0_20px_5px_rgba(59,130,246,0.10)]" />
             </div>
           ))}
         </div>
