@@ -8,49 +8,63 @@ const BentoGrid = () => {
 
   const cardData = [
     {
-      title: "Featured Projects",
-      description: "A selection of my best work.",
-      size: "large" as const,
-      details: (
-        <>
-          <div className="flex flex-row gap-4 justify-center mb-4">
-            <a href="#project-reimagining" className="bg-white/10 text-white px-4 py-2 rounded-full hover:bg-white/20 transition">Reimagining the Beat</a>
-            <a href="#project-tasveer" className="bg-white/10 text-white px-4 py-2 rounded-full hover:bg-white/20 transition">Tasveer</a>
-            <a href="#project-spark" className="bg-white/10 text-white px-4 py-2 rounded-full hover:bg-white/20 transition">Spark Trend</a>
-          </div>
-          <ul className="list-disc pl-6 space-y-2 text-white/80">
-            <li id="project-reimagining"><span className="font-semibold text-white">Reimagining the Beat:</span> Redesigning Apple Music</li>
-            <li id="project-tasveer"><span className="font-semibold text-white">Tasveer:</span> AI-powered photo curation</li>
-            <li id="project-spark"><span className="font-semibold text-white">Spark Trend:</span> Social media analytics dashboard</li>
-          </ul>
-        </>
-      )
-    },
-    {
-      title: "Skills",
-      description: "Figma,SQL, Unity, C++, AR/VR, UI/UX Design, Photography,  Git, Python, Blender, Illustrator, Photoshop, Premiere Pro, After Effects,.",
-      size: "medium" as const,
-      details: "A multidisciplinary skillset covering frontend, backend, design, and creative technologies. I thrive in fast-paced environments and love solving complex problems with elegant solutions."
-    },
-    {
       title: "About Me",
       description: "Creative technologist, designer, and photographer",
       size: "medium" as const,
       details: "Hi! I'm a passionate developer and designer with a love for blending technology and art. I specialize in building immersive web experiences, crafting beautiful interfaces, and capturing moments through photography. Always learning, always creating."
     },
     {
+      title: "Skills",
+      description: "Technical expertise across design and development",
+      size: "medium" as const,
+      details: "Figma • SQL • Unity • C++ • AR/VR • UI/UX Design • Photography • Git • Python • Blender • Illustrator • Photoshop • Premiere Pro • After Effects"
+    },
+    {
+      title: "Featured Projects",
+      description: "A selection of my best work",
+      size: "large" as const,
+      details: (
+        <>
+          <div className="space-y-3">
+            <div className="bg-white/5 p-4 rounded-xl">
+              <h4 className="text-white font-semibold mb-1">Reimagining the Beat</h4>
+              <p className="text-white/60 text-sm">Redesigning Apple Music interface</p>
+            </div>
+            <div className="bg-white/5 p-4 rounded-xl">
+              <h4 className="text-white font-semibold mb-1">Tasveer</h4>
+              <p className="text-white/60 text-sm">AI-powered photo curation platform</p>
+            </div>
+            <div className="bg-white/5 p-4 rounded-xl">
+              <h4 className="text-white font-semibold mb-1">Spark Trend</h4>
+              <p className="text-white/60 text-sm">Social media analytics dashboard</p>
+            </div>
+          </div>
+        </>
+      )
+    },
+    {
       title: "Experience",
-      description: "Senior Frontend Developer, Co-Founder, President, Designer, Photographer",
+      description: "Professional journey and key roles",
       size: "wide" as const,
       details: (
-        <ul className="list-disc pl-6 space-y-2 text-white/80">
-          <li>Senior Frontend Developer at Tech Company</li>
-          <li>Co-Founder at OmniOTL</li>
-          <li>President at The Ace-OTC</li>
-          <li>Lead Designer & Photographer at Spark Trend</li>
-          <li>UX/UI Designer for Tasveer</li>
-          <li>Freelance Creative for multiple startups</li>
-        </ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="bg-white/5 p-3 rounded-lg">
+            <h4 className="text-white font-medium text-sm">Senior Frontend Developer</h4>
+            <p className="text-white/60 text-xs">Tech Company</p>
+          </div>
+          <div className="bg-white/5 p-3 rounded-lg">
+            <h4 className="text-white font-medium text-sm">Co-Founder</h4>
+            <p className="text-white/60 text-xs">OmniOTL</p>
+          </div>
+          <div className="bg-white/5 p-3 rounded-lg">
+            <h4 className="text-white font-medium text-sm">President</h4>
+            <p className="text-white/60 text-xs">The Ace-OTC</p>
+          </div>
+          <div className="bg-white/5 p-3 rounded-lg">
+            <h4 className="text-white font-medium text-sm">Lead Designer & Photographer</h4>
+            <p className="text-white/60 text-xs">Spark Trend</p>
+          </div>
+        </div>
       )
     },
   ];
@@ -96,7 +110,7 @@ const BentoGrid = () => {
           A collection of projects, skills, and experiences that define my creative journey
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-7xl mx-auto items-start">
+      <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {/* Render main cards */}
         {cardData.map((card, index) => (
           <BentoCard
@@ -104,7 +118,7 @@ const BentoGrid = () => {
             className={`bg-white/5 border-white/10 cursor-pointer hover:bg-white/10 transition-all duration-300 ${
               card.size === 'large' ? 'md:col-span-2 md:row-span-2' :
               card.size === 'wide' ? 'md:col-span-2' :
-              card.size === 'small' ? 'md:col-span-1' : ''
+              'md:col-span-1'
             }`}
             title={card.title}
             description={card.description}
@@ -117,23 +131,24 @@ const BentoGrid = () => {
                 <span className="text-white/40 text-xs">Click to explore</span>
               </div>
             ) : (
-              <div className="w-full mt-4">{card.details}</div>
+              <div className="w-full mt-4 overflow-hidden">{card.details}</div>
             )}
           </BentoCard>
         ))}
-        {/* Social/contact row: force all 4 buttons in a single row */}
-        <div className="col-span-1 md:col-span-3 lg:col-span-5 flex flex-row gap-8 justify-center items-center py-2">
+        
+        {/* Social/contact row */}
+        <div className="col-span-1 md:col-span-4 grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           {socialCards.map((card, idx) => (
             <div
               key={idx}
-              className="bg-white/5 border-white/10 cursor-pointer hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center p-6 rounded-3xl min-w-[110px] shadow-lg"
+              className="bg-white/5 border border-white/10 cursor-pointer hover:bg-white/10 transition-all duration-300 flex flex-col items-center justify-center p-4 rounded-2xl shadow-lg"
               onClick={() => window.open(card.link, '_blank', 'noopener,noreferrer')}
               tabIndex={0}
               role="button"
               onKeyPress={e => { if (e.key === 'Enter') window.open(card.link, '_blank', 'noopener,noreferrer'); }}
             >
               {card.icon}
-              <span className="text-white font-semibold text-lg mb-1">{card.title}</span>
+              <span className="text-white font-medium text-sm text-center">{card.title}</span>
             </div>
           ))}
         </div>
