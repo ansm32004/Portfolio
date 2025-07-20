@@ -44,27 +44,17 @@ const BentoGrid = () => {
     },
     {
       title: "Experience",
-      description: "Professional journey and key roles",
+      description: "Product Designer, Co-Founder, President, Graphic and Tech Intern",
       size: "wide" as const,
       details: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <div className="bg-white/5 p-3 rounded-lg">
-            <h4 className="text-white font-medium text-sm">Senior Frontend Developer</h4>
-            <p className="text-white/60 text-xs">Tech Company</p>
-          </div>
-          <div className="bg-white/5 p-3 rounded-lg">
-            <h4 className="text-white font-medium text-sm">Co-Founder</h4>
-            <p className="text-white/60 text-xs">OmniOTL</p>
-          </div>
-          <div className="bg-white/5 p-3 rounded-lg">
-            <h4 className="text-white font-medium text-sm">President</h4>
-            <p className="text-white/60 text-xs">The Ace-OTC</p>
-          </div>
-          <div className="bg-white/5 p-3 rounded-lg">
-            <h4 className="text-white font-medium text-sm">Lead Designer & Photographer</h4>
-            <p className="text-white/60 text-xs">Spark Trend</p>
-          </div>
-        </div>
+        <ul className="list-disc pl-6 space-y-2 text-white/80">
+          <li>Product Designer at Southern Immigration</li>
+          <li>Co-Founder at OnnOff</li>
+          <li>President at The Ace Tech</li>
+          <li>Graphic and Tech Intern at IndiDino Ventures</li>
+          <li>UX/UI Designer for Tasveer</li>
+          <li>Freelance Creative for multiple startups</li>
+        </ul>
       )
     },
   ];
